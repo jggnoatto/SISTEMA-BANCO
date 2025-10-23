@@ -1,8 +1,11 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './Componentes/Header/header';
-import Main from './Componentes/Main/main';
+import Login from './Componentes/Login/login';
 import Cadastro from './Componentes/Cadastro/cadastro';
+import TelaInicio from './Componentes/TelaInício/telaInicio';
+import TelaDeposito from './Componentes/TelaDepósito/telaDeposito';
+import TelaSaque from './Componentes/TelaSaque/telaSaque';
 
 function App() {
   return (
@@ -10,10 +13,13 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Main />} /> 
+          <Route path="/" element={<Login />} /> 
           {/* //ir para tela cadastro */}
           <Route path="/cadastro" element={<Cadastro />} /> 
-          <Route path="/inicio" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/inicio" element={<TelaInicio />} />
+          <Route path="/depósito" element={<TelaDeposito />} />
+          <Route path="/saque" element={<TelaSaque />} />
         </Routes>
       </div>
     </BrowserRouter>

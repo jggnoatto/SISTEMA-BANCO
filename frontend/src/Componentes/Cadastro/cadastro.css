@@ -34,24 +34,7 @@
     border: 1px solid #CCCCCC;
     border-radius: 4px;
     font-size: 16px;
-}
-
-.formCadastro button {
-    width: 50%;
-    padding: 10px;
-    background-color: #F8B230;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-.formCadastro button:hover {
-    background-color: #E69A1D;
-}
+} 
 
 .formCadastro p {
     font-family: 'Roboto', sans-serif;
@@ -67,4 +50,11 @@
     font-style: italic;
     color: #0077FF;
     margin-top: -20px;
+}
+
+.formCadastro input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #F8B230;
+    border: 1px solid #F8B230;
+    transition: 0.3s;
 }
