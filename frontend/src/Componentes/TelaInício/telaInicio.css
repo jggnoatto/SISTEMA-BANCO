@@ -46,6 +46,7 @@
 }
 
 .functions-card button{
+    display: flex;
     background-color: #F5F5F5;
     border: #000000 2px solid;
     border-radius: 50%;
@@ -57,6 +58,8 @@
     color: #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 .functions-card button:hover{
@@ -74,3 +77,4 @@
     color: inherit;
     font-weight: 500;
 }
+
