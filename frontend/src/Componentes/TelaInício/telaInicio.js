@@ -1,16 +1,21 @@
 import "./telaInicio.css";
 import { Link, link } from "react-router-dom";
 import SideBar from "../SideBar/sideBar";
+import SaldoDisponivel from "../SaldoDisponível/saldoDisponivel";
+import LimiteDeposito from "../LimiteDeposito/limiteDeposito";
+import LimiteSaque from "../LimiteSaque/limiteSaque";
 
 function TelaInicio() {
     return (
         <div className="tela-inicio">
             <SideBar/>
             <div className="functions-container">
+
                 <section className="saldo-card">
-                    <h2>Saldo Disponível</h2>
-                    <p>R$ 5.000,00</p>
+                    <SaldoDisponivel saldo="10.000,00"/>
                 </section>
+                
+                
 
                 <section className="functions-card">
                     <section className="functions-button">
@@ -38,6 +43,9 @@ function TelaInicio() {
                     </section>
                 </section>
             </div>
+            <LimiteDeposito limite="1.000,00"/>
+            <LimiteSaque saque="1.000,00"/>
+
         </div>
     );
 }

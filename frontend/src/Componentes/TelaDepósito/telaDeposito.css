@@ -1,0 +1,91 @@
+.saldo-card input{
+    width: 200px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-bottom:  2px solid #F8B230 ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-top: 15px;
+}
+
+.saldo-card input::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #C4C4C4;
+}
+
+.saldo-card input:focus{
+    outline: none;
+}
+
+.saldo-card .saldo-text{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px !important;
+}
+
+.linha p{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-right: -10px;
+    margin-top: 32px;
+}
+
+.functions-card-deposito{
+    display: flex !important;
+    flex-direction: column;
+    background-color: #F5F5F5; 
+    border-radius: 0px 10px 10px 0px;
+    width: 30rem;
+    height: 15rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    text-decoration: none;
+}
+
+.functions-card-deposito p{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.functions-card-deposito .botoes-deposito button{
+    display: flex;
+    background-color: #F5F5F5;
+    border: #000000 2px solid;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+.functions-card-deposito .botoes-deposito{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.limite-saldo{
+    display: block;
+}
+
+.saldo-texto{
+    margin-left: 17rem;
+}

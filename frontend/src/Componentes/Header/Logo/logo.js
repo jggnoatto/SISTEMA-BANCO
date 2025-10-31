@@ -3,7 +3,7 @@ import './logo.css'
 function Logo () { 
     return (
         <div className="logo">
-            <h1>Banco</h1>
+            <h1>MetalBank</h1>
         </div>
     )
 }

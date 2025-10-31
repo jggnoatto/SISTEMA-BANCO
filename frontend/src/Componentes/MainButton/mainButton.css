@@ -1,4 +1,4 @@
-button {
+.mainButton button {
     width: 100%;
     padding: 10px;
     background-color: #F8B230;
@@ -11,7 +11,7 @@ button {
     margin-top: 15px;
 }
 
-button:hover {
+.mainButton button:hover {
     background-color: #E69A1D;
     box-shadow: 0 0 10px #E69A1D;
     transition: ease-in-out 0.3s;
