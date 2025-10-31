@@ -75,6 +75,11 @@
     gap: 5px;
 }
 
+.functions-card-deposito .botoes-deposito button:hover{
+    box-shadow: #F8B230 0px 4px 4px;
+    transition: 0.5s;
+}
+
 
 .functions-card-deposito .botoes-deposito{
     display: flex;

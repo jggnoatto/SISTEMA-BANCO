@@ -66,7 +66,8 @@
 }
 
 .functions-card button:hover{
-    background-color: #E0E0E0;
+    box-shadow: #F8B230 0px 4px 4px;
+    transition: 0.5s;
 }
 
 .functions-card .functions-button a {
