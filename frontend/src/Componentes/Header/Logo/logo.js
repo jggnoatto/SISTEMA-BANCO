@@ -1,9 +1,11 @@
 import './logo.css'
+import logo from '../../../assets/logoMetal.png'
+import logoUnbold from '../../../assets/logoMetalUnbold.png'
 
 function Logo () { 
     return (
         <div className="logo">
-            <h1>MetalBank</h1>
+            <img src={logoUnbold} alt="Logo Metal Bank" />
         </div>
     )
 }

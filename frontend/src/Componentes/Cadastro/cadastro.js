@@ -17,7 +17,7 @@ function Cadastro () {
                 <input type="password" placeholder="Confirme sua senha" />
                 <MainButton
                     texto="ABRIR CONTA" 
-                    onClick="/login"
+                    to="/login"
                 />
                 <p>Já possui uma conta?</p>
                 <Link to="/login">Entrar com conta existente</Link>

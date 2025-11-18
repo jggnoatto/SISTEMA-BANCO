@@ -18,7 +18,7 @@ function Login () {
                 <p className='avisoBan'>Se não inserir a senha correta em 3 tentativas seu acesso será bloqueado por alguns instantes.</p>
                 <MainButton
                     texto="ENTRAR" 
-                    onClick="/inicio"
+                    to="/inicio"
                 />
                 <p>Ainda não possui uma conta?</p>
                 <Link to="/cadastro">Cadastre-se</Link>

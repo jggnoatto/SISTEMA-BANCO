@@ -3,8 +3,18 @@ import MainButton from "../MainButton/mainButton"
 import SaldoDisponivel from "../SaldoDisponível/saldoDisponivel"
 import "./telaSaque.css"
 import LimiteSaque from "../LimiteSaque/limiteSaque"
+import SaqueModal from "./SaqueModal/saqueModal"
+import { useState } from "react"
 
-function telaSaque(){
+function TelaSaque(){
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
     return(
         <div>
             <SideBar/>
@@ -20,7 +30,7 @@ function telaSaque(){
                     <p>Deseja confirmar seu saque?</p>
                     <MainButton
                         texto="CONFIRMAR"
-                        onClick="/confirmar-saque"
+                        onClick={handleOpenModal}
                     />
                 </div>
             </div>
@@ -31,8 +41,14 @@ function telaSaque(){
                 </div>
                 
             </section>
+
+            <SaqueModal 
+                show={isModalOpen}
+                onClose={handleCloseModal}
+                operacao="saque"
+            />
         </div>
     )
 }
 
-export default telaSaque
+export default TelaSaque

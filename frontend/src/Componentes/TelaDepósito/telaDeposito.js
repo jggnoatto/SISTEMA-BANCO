@@ -32,10 +32,6 @@ function telaDeposito(){
                             Cartão
                         </button>
                     </section>
-                    <MainButton
-                        texto="CONFIRMAR"
-                        onClick="/confirmar-deposito"
-                    />
                 </div>
             </div>
             <section className="limite-saldo">
