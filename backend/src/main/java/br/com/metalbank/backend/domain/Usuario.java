@@ -82,4 +82,20 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public Integer getTentativasLogin() {
+        return tentativasLogin;
+    }
+
+    public void setTentativasLogin(Integer tentativasLogin) {
+        this.tentativasLogin = tentativasLogin;
+    }
+
+    public LocalDateTime getBloqueadoAte() {
+        return bloqueadoAte;
+    }
+
+    public void setBloqueadoAte(LocalDateTime bloqueadoAte) {
+        this.bloqueadoAte = bloqueadoAte;
+    }
 }

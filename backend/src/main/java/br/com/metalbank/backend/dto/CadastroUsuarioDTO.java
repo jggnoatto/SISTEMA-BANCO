@@ -9,6 +9,9 @@ public class CadastroUsuarioDTO {
     private String email;
     private String senha;
 
+
+    // GETTERS E SETTERS
+
     public String getNome() {
         return nome;
     }

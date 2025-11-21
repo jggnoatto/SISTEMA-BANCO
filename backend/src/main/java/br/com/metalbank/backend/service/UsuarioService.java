@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Service
 public class UsuarioService {
@@ -42,7 +43,7 @@ public class UsuarioService {
 
 
         // Salva o Usuário
-        Usuario usuarioSalvo = usuarioRepository.save(novoUsuario;
+        Usuario usuarioSalvo = usuarioRepository.save(novoUsuario);
 
 
         // Criar a Conta automaticamente (Regra de negócio)
@@ -65,7 +66,7 @@ public class UsuarioService {
 
         // Verificar Bloqueio (RF 8)
         if (usuario.estaBloqueado()){
-            throw new RuntimeException("Conta bloqueada temporariamente. Aguarde 5 minutos")
+            throw new RuntimeException("Conta bloqueada temporariamente. Aguarde 5 minutos");
         }
 
         // Verificar Senha
@@ -82,5 +83,37 @@ public class UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuário sem conta!"));
 
         return converterParaDTO(usuario, conta);
+    }
+
+    // MÉTODOS AUXILIARES
+
+    private void aumentarTentativasErro(Usuario usuario){
+        int novasTentativas = usuario.getTentativasLogin()+1;
+        usuario.setTentativasLogin(novasTentativas);
+
+        if (novasTentativas >= 3){
+            usuario.setBloqueadoAte(LocalDateTime.now().plusMinutes(5)); // Bloqueia por 5 minutos
+            usuario.setTentativasLogin(0);
+        }
+        usuarioRepository.save(usuario);
+    }
+
+    private void resetarTentativas(Usuario usuario){
+        if (usuario.getTentativasLogin() > 0 || usuario.getBloqueadoAte() != null){
+            usuario.setTentativasLogin(0);
+            usuario.setBloqueadoAte(null);
+            usuarioRepository.save(usuario);
+        }
+    }
+
+    // Converter as entidades do banco para o JSON para o frontend
+    private UsuarioResponseDTO converterParaDTO(Usuario usuario, Conta conta){
+        UsuarioResponseDTO dto = new UsuarioResponseDTO();
+        dto.setId(usuario.getId());
+        dto.setNome(usuario.getNome());
+        dto.setCpf(usuario.getCpf());
+        dto.setEmail(usuario.getEmail());
+        dto.setSaldo(conta.getSaldo());
+        return dto;
     }
 }
