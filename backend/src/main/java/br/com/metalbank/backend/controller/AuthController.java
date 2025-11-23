@@ -1,6 +1,5 @@
 package br.com.metalbank.backend.controller;
 
-
 import br.com.metalbank.backend.dto.LoginDTO;
 import br.com.metalbank.backend.dto.CadastroUsuarioDTO;
 import br.com.metalbank.backend.dto.UsuarioResponseDTO;
@@ -10,10 +9,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin(origins = "*") // LIBERA O REACT: Permite que qualquer site acesse essa API
 public class AuthController {
+
+
+    public boolean senhaForte(String senha) {
+        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        return senha.matches(regex);
+    }
 
     @Autowired
     private UsuarioService usuarioService;
@@ -22,6 +28,13 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO dados){
         try {
+
+            // Login padrão de testes
+            if (dados.getCpf().equals("11111111111") && dados.getSenha().equals("123")) {
+                return ResponseEntity.ok("LOGIN PADRÃO ACEITO");
+            }
+
+
             // Chama a service para tentar logar
             UsuarioResponseDTO usuarioLogado = usuarioService.login(dados);
 
@@ -36,6 +49,12 @@ public class AuthController {
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrar(@RequestBody CadastroUsuarioDTO dados) {
         try {
+
+            if (!senhaForte(dados.getSenha())) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("A senha deve ter no mínimo 8 caracteres, incluir letra maiúscula, minúscula, número e caractere especial.");
+            }
+
             // Chama a Service para cadastrar
             UsuarioResponseDTO usuarioCadastrado = usuarioService.cadastrar(dados);
 

@@ -1,18 +1,28 @@
 import "./telaInicio.css";
 import { Link, link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import SideBar from "../SideBar/sideBar";
 import SaldoDisponivel from "../SaldoDisponível/saldoDisponivel";
 import LimiteDeposito from "../LimiteDeposito/limiteDeposito";
 import LimiteSaque from "../LimiteSaque/limiteSaque";
 
 function TelaInicio() {
+const [usuario, setUsuario] = useState(null);
+
+    useEffect(() => {
+        const dados = localStorage.getItem("usuario");
+        if (dados) {
+            setUsuario(JSON.parse(dados));
+        }
+    }, []);
+
     return (
         <div className="tela-inicio">
-            <SideBar/>
+            <SideBar />
             <div className="functions-container">
 
                 <section className="saldo-card">
-                    <SaldoDisponivel saldo="10.000,00"/>
+                    <SaldoDisponivel saldo={usuario?.saldo ?? 0} />
                 </section>
                 
                 
