@@ -1,0 +1,91 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000; 
+}
+
+.modal-backdrop button {
+   margin-left: 160px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 450px; 
+    text-align: center; 
+    position: relative; 
+}
+
+.modal-content img.qrCode{
+    margin-top: 15px;
+    width: 220px;
+    margin-bottom: 10px;
+}
+
+.modal-content p{
+    margin-bottom: 10px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.modal-subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.modal-input {
+    width: 200px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-bottom:  2px solid #F8B230 ;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.modal-input::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFF;
+}
+.modal-input:focus{
+    outline: none;
+}
+
+.modal-security-warning {
+    font-size: 12px;
+    color: #900; 
+    margin-top: 20px;
+    line-height: 1.4;
+}
+
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+}
