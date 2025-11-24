@@ -13,7 +13,7 @@ function Login () {
 
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
+    const handleLogin = async () => { 
         try {
             const response = await AuthService.login(cpf, senha);
 
@@ -23,7 +23,8 @@ function Login () {
             navigate("/inicio");
 
         } catch (error) {
-            setErro("CPF ou senha inválidos.");
+            const mensagem = error.response?.data || "Erro ao fazer login.";
+            setErro(mensagem);  // <-- mensagem do backend!
         }
     };
 

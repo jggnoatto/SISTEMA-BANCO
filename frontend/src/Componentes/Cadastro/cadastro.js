@@ -51,6 +51,7 @@ function Cadastro () {
                     placeholder="CPF"
                     value={cpf}
                     onChange={(e) => setCpf(e.target.value)}
+                    maxLength={11}
                 />
 
                 <input 

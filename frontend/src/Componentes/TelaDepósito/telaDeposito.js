@@ -1,11 +1,12 @@
 import SideBar from "../SideBar/sideBar"
 import MainButton from "../MainButton/mainButton"
 import LimiteDeposito from "../LimiteDeposito/limiteDeposito"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import PixModal from "./PixModal/pixModal"
 import SaldoDisponivel from "../SaldoDisponível/saldoDisponivel"
 import "./telaDeposito.css"
 import CreditoModal from "./CreditoModal/creditoModal"
+import { useUsuario } from "../Auxiliares/useUsuario";
 
 function TelaDeposito(){
     const [isPixModalOpen, setIsPixModalOpen] = useState(false);
@@ -24,6 +25,9 @@ function TelaDeposito(){
     const handleCloseCreditoModal = () => {
         setIsCreditoModalOpen(false);
     };
+
+    const usuario = useUsuario();
+
     return(
         <div>
             <SideBar/>
@@ -56,7 +60,7 @@ function TelaDeposito(){
             <section className="limite-saldo">
                 <LimiteDeposito limite="1.000,00"/>
                 <div className="saldo-texto">
-                    <SaldoDisponivel saldo="10.000,00"/>
+                    <SaldoDisponivel saldo={usuario?.saldo ?? 0}/>
                 </div>
                 
             </section>

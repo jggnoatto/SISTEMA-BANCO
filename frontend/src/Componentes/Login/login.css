@@ -15,7 +15,7 @@ main {
     background-color: #F5F5F5;
     padding: 40px;
     border-radius: 8px;
-    height: 350px;
+    height: auto;
     width: 400px;
 }
 .login h2 {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*") // LIBERA O REACT: Permite que qualquer site acesse essa API
+@CrossOrigin(origins = "*")
 public class AuthController {
 
 
@@ -61,7 +61,7 @@ public class AuthController {
             // Se der certo retorna 201 (Created)
             return ResponseEntity.status(HttpStatus.CREATED).body(usuarioCadastrado);
         } catch (RuntimeException e) {
-            // Se der erro (CPF duplicado, etc), retorna 400 (Bad Request)
+            // Se der erro (CPF duplicado, etc) retorna 400 (Bad Request)
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 

@@ -5,8 +5,12 @@ import "./telaSaque.css"
 import LimiteSaque from "../LimiteSaque/limiteSaque"
 import SaqueModal from "./SaqueModal/saqueModal"
 import { useState } from "react"
+import { useUsuario } from "../Auxiliares/useUsuario";
 
 function TelaSaque(){
+    // Chamando as informações do usuário
+    const usuario = useUsuario();
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -37,7 +41,7 @@ function TelaSaque(){
             <section className="limite-saldo">
                 <LimiteSaque saque="1.000,00"/>
                 <div className="saldo-texto">
-                    <SaldoDisponivel saldo="10.000,00"/>
+                    <SaldoDisponivel saldo={usuario?.saldo ?? 0}/>
                 </div>
                 
             </section>

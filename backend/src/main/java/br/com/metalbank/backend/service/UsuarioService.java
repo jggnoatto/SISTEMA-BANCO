@@ -85,7 +85,7 @@ public class UsuarioService {
         return converterParaDTO(usuario, conta);
     }
 
-    // MÉTODOS AUXILIARES
+    // FUNÇÕES AUXILIARES
 
     private void aumentarTentativasErro(Usuario usuario){
         int novasTentativas = usuario.getTentativasLogin()+1;

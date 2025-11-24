@@ -5,16 +5,11 @@ import SideBar from "../SideBar/sideBar";
 import SaldoDisponivel from "../SaldoDisponível/saldoDisponivel";
 import LimiteDeposito from "../LimiteDeposito/limiteDeposito";
 import LimiteSaque from "../LimiteSaque/limiteSaque";
+import { useUsuario } from "../Auxiliares/useUsuario";
 
 function TelaInicio() {
-const [usuario, setUsuario] = useState(null);
-
-    useEffect(() => {
-        const dados = localStorage.getItem("usuario");
-        if (dados) {
-            setUsuario(JSON.parse(dados));
-        }
-    }, []);
+    // Chamando informações do usuário
+    const usuario = useUsuario();
 
     return (
         <div className="tela-inicio">
