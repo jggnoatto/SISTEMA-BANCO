@@ -11,6 +11,24 @@ public class UsuarioResponseDTO {
     private String cpf;
     private String email;
     private BigDecimal saldo;
+    private BigDecimal limiteDiarioDeposito;
+    private BigDecimal limiteDiarioSaque;
+
+    public BigDecimal getLimiteDiarioDeposito() {
+        return limiteDiarioDeposito;
+    }
+
+    public void setLimiteDiarioDeposito(BigDecimal limiteDiarioDeposito) {
+        this.limiteDiarioDeposito = limiteDiarioDeposito;
+    }
+
+    public BigDecimal getLimiteDiarioSaque() {
+        return limiteDiarioSaque;
+    }
+
+    public void setLimiteDiarioSaque(BigDecimal limiteDiarioSaque) {
+        this.limiteDiarioSaque = limiteDiarioSaque;
+    }
 
     public Long getId() {
         return id;

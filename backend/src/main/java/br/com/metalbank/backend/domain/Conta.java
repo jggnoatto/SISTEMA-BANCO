@@ -23,7 +23,10 @@ public class Conta {
     private BigDecimal saldo = BigDecimal.ZERO; // Começa com 0.00
 
     @Column(nullable = false)
-    private BigDecimal limiteDiario = new BigDecimal("1000.00"); // RF 9
+    private BigDecimal limiteDiarioSaque = new BigDecimal("1000.00"); // RF 9
+
+    @Column(nullable = false)
+    private  BigDecimal limiteDiarioDeposito = new BigDecimal("1000.00");
 
 
     // Join para ligar usuário
@@ -55,12 +58,12 @@ public class Conta {
         this.usuario = usuario;
     }
 
-    public BigDecimal getLimiteDiario() {
-        return limiteDiario;
+    public BigDecimal getLimiteDiarioSaque() {
+        return limiteDiarioSaque;
     }
 
-    public void setLimiteDiario(BigDecimal limiteDiario) {
-        this.limiteDiario = limiteDiario;
+    public void setLimiteDiarioSaque(BigDecimal limiteDiarioSaque) {
+        this.limiteDiarioSaque = limiteDiarioSaque;
     }
 
     public BigDecimal getSaldo() {
@@ -69,5 +72,13 @@ public class Conta {
 
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
+    }
+
+    public BigDecimal getLimiteDiarioDeposito() {
+        return limiteDiarioDeposito;
+    }
+
+    public void setLimiteDiarioDeposito(BigDecimal limiteDiarioDeposito) {
+        this.limiteDiarioDeposito = limiteDiarioDeposito;
     }
 }

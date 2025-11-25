@@ -49,7 +49,7 @@ public class UsuarioService {
         // Criar a Conta automaticamente (Regra de negócio)
         Conta novaConta = new Conta();
         novaConta.setSaldo(BigDecimal.ZERO); // Começa Zerado
-        novaConta.setLimiteDiario(new BigDecimal("1000.00"));
+        novaConta.setLimiteDiarioSaque(new BigDecimal("1000.00"));
         novaConta.setUsuario(usuarioSalvo); // Liga a conta do usuário
 
         contaRepository.save(novaConta);
@@ -114,6 +114,8 @@ public class UsuarioService {
         dto.setCpf(usuario.getCpf());
         dto.setEmail(usuario.getEmail());
         dto.setSaldo(conta.getSaldo());
+        dto.setLimiteDiarioDeposito(conta.getLimiteDiarioDeposito());
+        dto.setLimiteDiarioSaque(conta.getLimiteDiarioSaque());
         return dto;
     }
 }

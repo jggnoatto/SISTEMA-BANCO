@@ -9,8 +9,18 @@ import CreditoModal from "./CreditoModal/creditoModal"
 import { useUsuario } from "../Auxiliares/useUsuario";
 
 function TelaDeposito(){
+    const [valorDeposito, setValorDeposito] = useState("");
     const [isPixModalOpen, setIsPixModalOpen] = useState(false);
         const handleOpenPixModal = () => {
+            const usuarioAtual = JSON.parse(localStorage.getItem("usuario"));
+
+            localStorage.setItem("usuario", JSON.stringify({
+                ...usuarioAtual,
+                valorDeposito: valorDeposito
+            }));
+
+            window.dispatchEvent(new Event("usuario-atualizado"));
+
             setIsPixModalOpen(true);
         };
     
@@ -36,7 +46,12 @@ function TelaDeposito(){
                     <h2>Quanto você deseja depositar?</h2>
                      <section className="linha">
                         <p className="saldo-text">R$</p>
-                        <input type="text" placeholder="0,00"/>
+                        <input
+                            type="number"
+                            placeholder="0,00"
+                            value={valorDeposito}
+                            onChange={(e) => setValorDeposito(e.target.value)}
+                        />
                      </section>
                 </div>
                 <div className="functions-card-deposito">
@@ -58,7 +73,7 @@ function TelaDeposito(){
                 </div>
             </div>
             <section className="limite-saldo">
-                <LimiteDeposito limite="1.000,00"/>
+                <LimiteDeposito limite={usuario?.limiteDiarioDeposito ?? "0,00"} />
                 <div className="saldo-texto">
                     <SaldoDisponivel saldo={usuario?.saldo ?? 0}/>
                 </div>
@@ -69,11 +84,13 @@ function TelaDeposito(){
             <PixModal 
                 show={isPixModalOpen}
                 onClose={handleClosePixModal}
+                valorDeposito={valorDeposito}
             />
 
             <CreditoModal
                 show={isCréditoModalOpen}
                 onClose={handleCloseCreditoModal}
+                valorDeposito={valorDeposito}
             />
         </div>
     )
