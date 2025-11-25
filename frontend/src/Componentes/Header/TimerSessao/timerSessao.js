@@ -1,19 +1,18 @@
+// TimerSessao.js
 import React, { useState, useEffect } from 'react';
-import './timerSessao.css'; // Crie este arquivo CSS para estilização
+import ModalExpirado from './ModalExpirado/modalExpirado'; // Certifique-se do caminho correto
+import './timerSessao.css';
 
-/**
- * Componente que exibe e gerencia o tempo restante da sessão.
- * @param {object} props
- * @param {number} props.minutos - O tempo inicial da sessão em minutos.
- */
 const TimerSessao = ({ minutos }) => {
+    const [isExpiradoOpen, setIsExpiradoOpen] = useState(false); // NOVO ESTADO AQUI
     const tempoInicialSegundos = minutos * 60;
-    
     const [tempoRestante, setTempoRestante] = useState(tempoInicialSegundos);
 
     useEffect(() => {
         if (tempoRestante <= 0) {
-            console.log("Sessão expirada. Redirecionando para login...");
+            console.log("Sessão expirada. Abrindo modal.");
+            // 1. Quando o tempo acaba, abre o modal
+            setIsExpiradoOpen(true); 
             return;
         }
 
@@ -23,7 +22,7 @@ const TimerSessao = ({ minutos }) => {
 
         return () => clearInterval(timerId);
 
-    }, [tempoRestante]); 
+    }, [tempoRestante]);
 
     const minutosRestantes = Math.floor(tempoRestante / 60);
     const segundosRestantes = tempoRestante % 60;
@@ -31,14 +30,22 @@ const TimerSessao = ({ minutos }) => {
     const tempoFormatado = `${String(minutosRestantes).padStart(2, '0')}:${String(segundosRestantes).padStart(2, '0')}`;
 
     return (
-        <div className="timer-sessao">
-            <span>
-                Sessão expira em: 
-                <span className={`tempo-restante ${tempoRestante <= 60 ? 'alerta' : ''}`}>
-                    {' '}{tempoFormatado}
+        <>
+            <div className="timer-sessao">
+                <span>
+                    Sessão expira em: 
+                    <span className={`tempo-restante ${tempoRestante <= 60 ? 'alerta' : ''}`}>
+                        {' '}{tempoFormatado}
+                    </span>
                 </span>
-            </span>
-        </div>
+            </div>
+            
+            <ModalExpirado
+                show={isExpiradoOpen} 
+                // O onClose é chamado pelo ModalExpiracao e apenas zera o estado aqui.
+                onClose={() => setIsExpiradoOpen(false)} 
+            />
+        </>
     );
 };
 

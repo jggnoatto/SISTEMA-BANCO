@@ -1,5 +1,22 @@
 header {
+    display: flex;
     background-color: #FFFFFF;
     padding: 10px 100px;
     border-bottom: 2px solid #F8B230;
+    align-items: center;
+}
+
+.informacoes-usuario{
+    display: flex;
+    margin-left: 315px;
+    gap: 250px;
+}
+
+.sessao{
+    display: flex;
+    gap: 10px;
+}
+
+.sessao svg{
+    color: black;
 }
