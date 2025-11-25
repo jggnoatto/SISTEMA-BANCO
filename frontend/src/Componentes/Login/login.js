@@ -19,6 +19,7 @@ function Login () {
 
             // salva o usuário logado
             localStorage.setItem("usuario", JSON.stringify(response.data));
+            window.dispatchEvent(new Event("usuario-atualizado"));
 
             navigate("/inicio");
 

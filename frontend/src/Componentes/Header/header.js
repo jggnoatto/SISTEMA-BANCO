@@ -2,11 +2,19 @@ import Logo from "./Logo/logo"  
 import TimerSessao from "./TimerSessao/timerSessao"; // Não se esqueça de importar
 import './header.css'
 import { useUsuario } from "../Auxiliares/useUsuario";
+import { useLocation } from "react-router-dom";
+
 
 const Header = () => {
-    const usuario = useUsuario();
+    const location = useLocation();
 
-    const estaLogado = !!usuario; // true se existir usuário no localStorage
+    // Nessas páginas o Header deve aparecer SEM infos de usuário
+    const paginasSemUsuario = ["/", "/login", "/cadastro"];
+
+    const esconderInfoUsuario = paginasSemUsuario.includes(location.pathname);
+
+    const usuario = useUsuario();
+    const estaLogado = !!usuario && !esconderInfoUsuario; // true se existir usuário no localStorage
 
     return (
         <header className="header">

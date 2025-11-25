@@ -18,7 +18,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/inicio" element={<TelaInicio />} />
-          <Route path="/depósito" element={<TelaDeposito />} />
+          <Route path="/depositar" element={<TelaDeposito />} />
           <Route path="/saque" element={<TelaSaque />} />
         </Routes>
       </div>
